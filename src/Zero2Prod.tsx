@@ -1,6 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
 
+const SERVER_URL =
+  process.env.REACT_APP_SERVER_URL ?? "http://localhost:3000";
+
 const Zero2Prod = () => {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
@@ -19,7 +22,7 @@ const Zero2Prod = () => {
     params.append("username", username);
 
     axios
-      .post("http://localhost:8000/login", params)
+      .post(SERVER_URL + "/login", params)
       .then(function (response) {
         console.log(response);
       })
@@ -30,6 +33,9 @@ const Zero2Prod = () => {
 
   return (
     <div>
+      <p>
+        Server URL: <a href={SERVER_URL}>{SERVER_URL}</a>
+      </p>
       <label>
         Username{" "}
         <input
