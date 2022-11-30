@@ -1,0 +1,14 @@
+spec:
+  name: app-client
+  region: sfo
+  static_sites:
+    - build_command: npm run build
+      environment_slug: node-js
+      github:
+        branch: main
+        deploy_on_push: true
+        repo: intrepion/zero2prod-client-react
+      name: client
+      routes:
+        - path: /
+      source_dir: /
